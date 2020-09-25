@@ -1,0 +1,55 @@
+version: "3.7"
+
+services:
+
+  php_blog:
+    build:
+      args:
+        user: laravelblog
+        uid: 1000
+      context: ./.docker/php
+    networks: [backend]
+    volumes:
+        [.:/app]
+    container_name: php_blog
+
+  node_blog:
+    build:
+      args:
+        user: nodeuser
+        uid: 1001
+      context: ./.docker/node
+    networks: [frontend, backend]
+    volumes:
+      [.:/app]
+    ports:
+      [1234:1234]
+    container_name: node_blog
+    tty: true
+
+  apache_blog:
+    build:
+      context: ./.docker/apache
+    depends_on: [php_blog, mysql_blog]
+    networks: [frontend, backend]
+    ports:
+      [8080:80]
+    volumes:
+      [.:/app]
+    container_name: apache_blog
+
+  mysql_blog:
+    image: mysql:5.7
+    restart: always
+    networks: [backend]
+    ports:
+      [13307:3306]
+    environment:
+      MYSQL_DATABASE: laravel_blog
+      MYSQL_USER: app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    container_name: mysql_blog
+networks:
+  frontend:
+  backend:
