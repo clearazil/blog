@@ -15,6 +15,9 @@ RUN docker-php-ext-install pdo_mysql
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Make sure composer creates .bat files for windows users
+RUN composer config -g bin-compat full
+
 # Create system user to run Composer and Artisan Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
