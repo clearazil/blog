@@ -15,9 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('post_id');
-            $table->unsignedInteger('reply_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('reply_id')->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('website')->nullable();

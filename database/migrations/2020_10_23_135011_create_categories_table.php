@@ -20,9 +20,9 @@ class CreateCategoriesTable extends Migration
         });
 
         Schema::create('category_post', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('post_id');
+            $table->id();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('post_id');
             $table->timestamps();
 
             $table->unique(['category_id', 'post_id']);
