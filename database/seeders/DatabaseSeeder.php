@@ -17,13 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $categories = Category::factory()->count(3)->create();
+
         User::factory()
             ->times(5)
             ->has(
                 Post::factory()
-                    ->has(Category::factory()->count(3))
                     ->has(Comment::factory()->count(4))
                     ->count(3)
+                    ->afterCreating(function (Post $post) use ($categories) {
+                        foreach ($categories as $category) {
+                            $post->categories()->attach($category->id);
+                        }
+                    })
             )
             ->create();
     }
