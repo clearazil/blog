@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class HomeController extends Controller
 {
     /**
@@ -9,6 +11,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $posts = Post::get();
+
+        return view('home.index', [
+            'posts' => $posts,
+        ]);
     }
 }

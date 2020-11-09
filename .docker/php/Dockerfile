@@ -26,3 +26,6 @@ USER $user
 
 # Make sure composer creates .bat files for windows users
 RUN composer config -g bin-compat full
+
+# Copy extra ini config
+COPY ini/conf.d/conf_dev.ini /usr/local/etc/php/conf.d/conf_dev.ini
