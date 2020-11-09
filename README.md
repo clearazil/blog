@@ -15,7 +15,7 @@ Do the following to get started
     * `php artisan ide-helper:meta`
     * `php artisan ide-helper:models --nowrite`
     
-If the config for a docker image has been changed, the image needs to be rebuild for docker to use the new config:
+If the config for a docker image has been changed, the image needs to be rebuilt for docker to use the new config:
 * First, stop the running docker containers with `docker-compose down`
 * Run `docker image ls` to get a list of images
 * Remove the image, for example 'blog_php_blog': `docker image rm blog_php_blog`
