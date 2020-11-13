@@ -31,6 +31,7 @@
             <p>No posts yet.</p>
         @endforelse
 
+        {{ $posts->links() }}
     </div> <!-- end main -->
 
 @endsection
