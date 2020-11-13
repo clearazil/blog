@@ -14,7 +14,7 @@
 
                     <div class="entry__meta">
                         <ul>
-                            <li>July 12, 2019</li>
+                            <li>{{ $post->created_at->isoformat('LL') }}</li>
                             <li><a href="#" title="" rel="category tag">Ghost</a></li>
                             <li>{{ $post->user->name }}</li>
                         </ul>
@@ -23,7 +23,7 @@
                 </header>
 
                 <div class="entry__content">
-                    <p>{{ $post->content }}</p>
+                    <p>{!! nl2br(e($post->content)) !!}</p>
                 </div>
 
             </article> <!-- end entry -->
