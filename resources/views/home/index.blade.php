@@ -9,7 +9,7 @@
                 <header class="entry__header">
 
                     <h2 class="entry__title h1">
-                        <a href="single.html" title="">{{ $post->title }}</a>
+                        <a href="{{ route('post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a>
                     </h2>
 
                     <div class="entry__meta">
@@ -23,7 +23,7 @@
                 </header>
 
                 <div class="entry__content">
-                    <p>{!! nl2br(e($post->content)) !!}</p>
+                    <p>{{ $post->firstLine() }}</p>
                 </div>
 
             </article> <!-- end entry -->

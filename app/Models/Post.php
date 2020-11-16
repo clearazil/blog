@@ -23,4 +23,31 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Models\Category');
     }
+
+    public function contentArray()
+    {
+        return explode(PHP_EOL, $this->content);
+    }
+
+    public function firstLine()
+    {
+        $postArray = $this->contentArray();
+
+        return reset($postArray);
+    }
+
+    public function contentArrayWithoutFirstLine()
+    {
+        $postArray = $this->contentArray();
+
+        // remove the first array element
+        reset($postArray);
+
+        // remove the next one as well if it contains a line break
+        if (empty(current($postArray))) {
+            reset($postArray);
+        }
+
+        return $postArray;
+    }
 }

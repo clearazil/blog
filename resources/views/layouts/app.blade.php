@@ -68,7 +68,7 @@
             <div class="row">
 
                 <ul class="s-header__nav">
-                    <li class="current"><a href="index.html">Home</a></li>
+                    <li class="current"><a href="{{ route('home.index') }}">Home</a></li>
                     <li class="has-children"><a href="#0">Dropdown</a>
                         <ul>
                             <li><a href="#0">Submenu 01</a></li>
