@@ -51,7 +51,7 @@
 
             <div id="comments">
 
-                <h3>5 Comments</h3>
+                <h3>{{ $post->comments->count() }} Comments</h3>
 
                 <!-- START commentlist -->
                 <ol class="commentlist">
