@@ -23,7 +23,7 @@
                 </header>
 
                 <div class="entry__content">
-                    <p>{{ $post->firstLine() }}</p>
+                    <p>{!! nl2br(e($post->lead)) !!}</p>
                 </div>
 
             </article> <!-- end entry -->

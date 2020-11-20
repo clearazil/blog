@@ -30,11 +30,8 @@
             </div>
 
             <div class="entry__content">
-                <p class="lead">{{ $post->firstLine() }}</p>
-
-                    @foreach ($post->contentArrayWithoutFirstLine() as $contentLine)
-                        {{ $contentLine }}<br />
-                    @endforeach
+                <p class="lead">{!! nl2br(e($post->lead)) !!}</p>
+                {!! nl2br(e($post->content)) !!}
 
             </div> <!-- entry__content -->
 
