@@ -105,6 +105,21 @@
 
             <div id="sidebar" class="s-content__sidebar large-4 column">
 
+                <div class="widget widget_text group">
+                    @if (Auth::check())
+                        <h3 class="h6">Welkom, {{ Auth::user()->name }}</h3>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="btn">Uitloggen</button>
+                        </form>
+                    @else
+                        <h3 class="h6">Login</h3>
+
+                        <a class = "btn" href="{{ route('login') }}" title="">Login</a>
+                    @endif
+                </div>
+
                 <div class="widget widget--search">
                     <h3 class="h6">Search</h3>
                     <form action="#">
@@ -116,7 +131,7 @@
                 </div>
 
                 <div class="widget widget--categories">
-                    <h3 class="h6">Categories.</h3>
+                    <h3 class="h6">Categories</h3>
                     <ul>
                         <li><a href="#0" title="">Wordpress</a> (2)</li>
                         <li><a href="#0" title="">Ghost</a> (14)</li>
@@ -128,7 +143,7 @@
                 </div>
 
                 <div class="widget widget_text group">
-                    <h3 class="h6">Widget Text.</h3>
+                    <h3 class="h6">Widget Text</h3>
 
                     <p>
                         Lorem ipsum Ullamco commodo laboris sit dolore commodo aliquip incididunt fugiat esse dolor
@@ -138,7 +153,7 @@
                 </div>
 
                 <div class="widget widget_tags">
-                    <h3 class="h6">Post Tags.</h3>
+                    <h3 class="h6">Post Tags</h3>
 
                     <div class="tagcloud group">
                         <a href="#0">Corporate</a>
@@ -152,7 +167,7 @@
                 </div>
 
                 <div class="widget widget_popular">
-                    <h3 class="h6">Popular Post.</h3>
+                    <h3 class="h6">Popular Post</h3>
 
                     <ul class="link-list">
                         <li><a href="#">Sint cillum consectetur voluptate.</a></li>
