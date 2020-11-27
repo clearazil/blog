@@ -483,6 +483,7 @@ th {
     color: #000000;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
+    width: 20%;
 }
 
 th:first-child, td:first-child {
@@ -968,8 +969,8 @@ button.h-full-width {
 }
 
 .btn--small, button.btn--small {
-    height: 5.6rem !important;
-    line-height: 5.2rem !important;
+    height: 3.6rem !important;
+    line-height: 3.2rem !important;
 }
 
 .btn--medium, button.btn--medium {
