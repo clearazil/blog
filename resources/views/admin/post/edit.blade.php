@@ -4,7 +4,8 @@
 
     <h4 class="h-remove-top">
         <a href="{{ route('admin.post.index') }}">Artikelen</a> \
-        <a href="{{ route('admin.post.create') }}">Nieuw</a>
+        <a href="{{ route('admin.post.show', ['post' => $post->id]) }}">{{ $post->title }}</a> \
+        <a href="{{ route('admin.post.edit', ['post' => $post->id]) }}">Bewerken</a>
     </h4>
 
     <form method="POST" action="{{ route('admin.post.update', ['post' => $post->id]) }}">

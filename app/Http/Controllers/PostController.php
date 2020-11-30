@@ -64,6 +64,21 @@ class PostController extends Controller
         return redirect(route('admin.post.show', ['post' => $post->id]));
     }
 
+    public function delete(Post $post, Request $request)
+    {
+        if ($post->delete()) {
+            $messageStatus = 'success';
+            $request->session()->flash('message', 'Artikel verwijderd.');
+        } else {
+            $messageStatus = 'error';
+            $request->session()->flash('message', 'Er is een fout opgetreden bij het verwijderen van het artikel.');
+        }
+
+        $request->session()->flash('message-status', $messageStatus);
+
+        return redirect(route('admin.post.index'));
+    }
+
     public function validatePost(Request $request)
     {
         return $request->validate([

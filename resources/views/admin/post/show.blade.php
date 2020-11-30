@@ -8,6 +8,11 @@
     </h4>
 
     <a class="btn btn--small" href="{{ route('admin.post.edit', ['post' => $post->id]) }}">Bewerken</a>
+    <form method="POST" action="{{ route('admin.post.delete', ['post' => $post->id])}}">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn--small" href="{{ route('admin.post.delete', ['post' => $post->id]) }}">Verwijderen</button>
+    </form>
 
     <div class="table-responsive">
 

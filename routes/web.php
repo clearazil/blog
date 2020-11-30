@@ -28,4 +28,5 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/admin/posts/{post}', [PostController::class, 'adminShow'])->name('admin.post.show');
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
     Route::put('/admin/posts/{post}/update', [PostController::class, 'update'])->name('admin.post.update');
+    Route::delete('/admin/posts/{post}/delete', [PostController::class, 'delete'])->name('admin.post.delete');
 });
