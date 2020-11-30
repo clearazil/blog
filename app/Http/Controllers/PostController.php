@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function adminIndex()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.post.index', [
             'posts' => $posts,
@@ -38,17 +38,39 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'lead' => 'required',
-            'content' => 'required',
-        ]);
+        $data = $this->validatePost($request);
 
         $post = new Post($data);
-        $post->is_premium = $request->has('is_premium');
         $post->user_id = Auth::id();
         $post->save();
 
         return redirect(route('admin.post.show', ['post' => $post->id]));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('admin.post.edit', [
+            'post' => $post,
+        ]);
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $data = $this->validatePost($request);
+
+        $post->fill($data);
+        $post->save();
+
+        return redirect(route('admin.post.show', ['post' => $post->id]));
+    }
+
+    public function validatePost(Request $request)
+    {
+        return $request->validate([
+            'title' => 'required',
+            'lead' => 'required',
+            'content' => 'required',
+            'is_premium' => 'required|bool',
+        ]);
     }
 }

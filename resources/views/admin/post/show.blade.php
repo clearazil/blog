@@ -7,6 +7,8 @@
         <a href="{{ route('admin.post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a>
     </h4>
 
+    <a class="btn btn--small" href="{{ route('admin.post.edit', ['post' => $post->id]) }}">Bewerken</a>
+
     <div class="table-responsive">
 
         <table>
@@ -17,11 +19,11 @@
                 </tr>
                 <tr>
                     <th>Aangemaakt op</th>
-                    <td>{{ $post->created_at->isoformat('D-M-Y h:m:s') }}</td>
+                    <td>{{ $post->created_at->isoformat('D-M-Y HH:mm:ss') }}</td>
                 </tr>
                 <tr>
                     <th>Bijgewerkt op</th>
-                    <td>{{ $post->updated_at->isoformat('D-M-Y h:m:s') }}</td>
+                    <td>{{ $post->updated_at->isoformat('D-M-Y HH:mm:ss') }}</td>
                 </tr>
                 <tr>
                     <th>Schrijver</th>

@@ -22,8 +22,8 @@
                         <tr>
                             <td><a href="{{ route('admin.post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a></td>
                             <td>{{ $post->user->name }}</td>
-                            <td>{{ $post->created_at->isoformat('D-M-Y h:m:s') }}</td>
-                            <td>{{ $post->updated_at->isoformat('D-M-Y h:m:s') }}</td>
+                            <td>{{ $post->created_at->isoformat('D-M-Y HH:mm:ss') }}</td>
+                            <td>{{ $post->updated_at->isoformat('D-M-Y HH:mm:ss') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
