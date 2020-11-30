@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h4 class="h-remove-top"><a href="{{ route('admin.post.index') }}">Artikelen</a> \ <a href="{{ route('post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a></h4>
+    <h4 class="h-remove-top">
+        <a href="{{ route('admin.post.index') }}">Artikelen</a> \
+        <a href="{{ route('admin.post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a>
+    </h4>
 
     <div class="table-responsive">
 
@@ -31,6 +34,10 @@
                 <tr>
                     <th>Inhoud</th>
                     <td>{!! nl2br(e($post->content)) !!}</td>
+                </tr>
+                <tr>
+                    <th>Premium</th>
+                    <td>{{ $post->is_premium ? 'Ja' : 'Nee' }}</td>
                 </tr>
             </tbody>
         </table>

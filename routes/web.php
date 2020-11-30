@@ -23,5 +23,7 @@ Route::post('/posts/{post}/comments/store', [CommentController::class, 'store'])
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/admin', [PostController::class, 'adminIndex'])->name('admin.post.index');
+    Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.post.create');
+    Route::post('/admin/posts/store', [PostController::class, 'store'])->name('admin.post.store');
     Route::get('/admin/posts/{post}', [PostController::class, 'adminShow'])->name('admin.post.show');
 });

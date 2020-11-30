@@ -18,6 +18,7 @@ class CommentController extends Controller
 
         $comment = new Comment($data);
         $comment->post_id = $post->id;
+        $comment->save();
 
         return redirect(route('post.show', ['post' => $post->id]) . '#comments');
     }

@@ -4,6 +4,8 @@
 
     <h4 class="h-remove-top"><a href="{{ route('admin.post.index') }}">Artikelen</a></h4>
 
+    <a class="btn btn--small" href="{{ route('admin.post.create') }}">Nieuw bericht</a>
+
     <div class="table-responsive">
 
         <table>
