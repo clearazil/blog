@@ -9,6 +9,7 @@
 
         <ul class="s-header__nav">
             <li class="current"><a href="{{ route('admin.post.index') }}">Artikelen</a></li>
+            <li><a href="{{ route('admin.category.index') }}">Categorieën</a></li>
         </ul> <!-- end #nav -->
 
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -29,4 +30,13 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
     Route::put('/admin/posts/{post}/update', [PostController::class, 'update'])->name('admin.post.update');
     Route::delete('/admin/posts/{post}/delete', [PostController::class, 'delete'])->name('admin.post.delete');
+    Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.category.index');
+    Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.category.create');
+    Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/admin/categories/{category}', [CategoryController::class, 'show'])->name('admin.category.show');
+    Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('/admin/categories/{category}/update', [CategoryController::class, 'update'])
+        ->name('admin.category.update');
+    Route::delete('/admin/categories/{category}/delete', [CategoryController::class, 'delete'])
+        ->name('admin.category.delete');
 });
