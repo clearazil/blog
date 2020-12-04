@@ -33,6 +33,22 @@
         <textarea name="content" class="h-full-width" id="content">{{ (old('content', $post->content)) }}</textarea>
 
         <div>
+            <label for="categories">Categorieën</label>
+            @error('categories')
+                <div class="warning">{{ $message }}</div>
+            @enderror
+            <div class="ss-custom-select-multiple">
+                <select class="h-full-width" name="categories[]" id="categories" multiple>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}"{{ $post->categories->contains($category->id) ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div>
             <label for="is_premium">Premium</label>
             @error('is_premium')
                 <div class="warning">{{ $message }}</div>

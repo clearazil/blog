@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -33,7 +34,11 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.post.create');
+        $categories = Category::all();
+
+        return view('admin.post.create', [
+            'categories' => $categories,
+        ]);
     }
 
     public function store(Request $request)
@@ -44,13 +49,18 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->save();
 
+        $post->categories()->attach($request->get('categories'));
+
         return redirect(route('admin.post.show', ['post' => $post->id]));
     }
 
     public function edit(Post $post)
     {
+        $categories = Category::all();
+
         return view('admin.post.edit', [
             'post' => $post,
+            'categories' => $categories,
         ]);
     }
 
@@ -60,6 +70,7 @@ class PostController extends Controller
 
         $post->fill($data);
         $post->save();
+        $post->categories()->sync($request->get('categories'));
 
         return redirect(route('admin.post.show', ['post' => $post->id]));
     }
@@ -86,6 +97,7 @@ class PostController extends Controller
             'lead' => 'required',
             'content' => 'required',
             'is_premium' => 'required|bool',
+            'categories' => 'exists:categories,id',
         ]);
     }
 }
