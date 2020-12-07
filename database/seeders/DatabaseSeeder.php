@@ -32,5 +32,10 @@ class DatabaseSeeder extends Seeder
                     })
             )
             ->create();
+
+        User::factory()
+            ->times(1)
+            ->has(Post::factory()->count(2))
+            ->create();
     }
 }
