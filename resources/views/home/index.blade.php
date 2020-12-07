@@ -14,13 +14,15 @@
                 <div class="entry__meta">
                     <ul>
                         <li>{{ $post->created_at->isoformat('LL') }}</li>
-                        <li>
-                            @foreach($post->categories as $key => $category)
-                                <a href="{{ route('home.index', ['categoryId' => $category->id]) }}" title="" rel="category tag">
-                                    {{ $category->name . ($key !== $post->categories->keys()->last() ? ', ' : '') }}
-                                </a>
-                            @endforeach
-                        </li>
+                        @if ($post->categories->isNotEmpty())
+                            <li>
+                                @foreach($post->categories as $key => $category)
+                                    <a href="{{ route('home.index', ['categoryId' => $category->id]) }}" title="" rel="category tag">
+                                        {{ $category->name . (!$loop->last ? ', ' : '') }}
+                                    </a>
+                                @endforeach
+                            </li>
+                        @endif
                         <li>{{ $post->user->name }}</li>
                     </ul>
                 </div>
