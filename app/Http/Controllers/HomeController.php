@@ -27,7 +27,13 @@ class HomeController extends Controller
             $posts = Post::orderBy('created_at', 'desc');
         }
 
-        return view('home.index', [
+        $view = 'home.index';
+
+        if ($request->ajax()) {
+            $view = 'home.partials.posts';
+        }
+
+        return view($view, [
             'posts' => $posts->paginate(4)->appends($request->except(('page'))),
         ]);
     }

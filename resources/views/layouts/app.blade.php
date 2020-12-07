@@ -1,5 +1,9 @@
 @extends('layouts.shared.main')
 
+@section('scripts')
+<script src="{{ asset('js/app.js') }}"></script>
+@endsection
+
 @section('header.title')
     <a href="index.html" title="">{{ config('app.name', 'Laravel') }}</a>
 @endsection

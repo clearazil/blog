@@ -15,14 +15,14 @@
         <ul>
             @foreach ($categories as $category)
                 <li>
-                    <a href="{{ route('home.index', ['categoryId' => $category->id]) }}" title="">
+                    <a class="category-link" category-id={{ $category->id }} href="{{ route('home.index', ['categoryId' => $category->id]) }}" title="">
                         {{ $category->name }}
                     </a> ({{ $category->posts->count() }})
                 </li>
             @endforeach
 
             @if (!empty($postsWithoutCategoryCount))
-                <li><a href="{{ route('home.index', ['uncategorized' => 1]) }}" title="">Uncategorized</a> ({{ $postsWithoutCategoryCount }})</li>
+                <li><a id="posts-without-category-link" href="{{ route('home.index', ['uncategorized' => 1]) }}" title="">Uncategorized</a> ({{ $postsWithoutCategoryCount }})</li>
             @endif
         </ul>
     </div>
