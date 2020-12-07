@@ -20,6 +20,9 @@ class HomeController extends Controller
             $posts = Post::whereHas('categories', function (Builder $query) use ($categoryId) {
                 $query->where('categories.id', $categoryId);
             })->orderBy('created_at', 'desc');
+        } elseif (!empty($request->query('uncategorized'))) {
+            $posts = Post::whereDoesntHave('categories')
+                ->orderBy('created_at', 'desc');
         } else {
             $posts = Post::orderBy('created_at', 'desc');
         }

@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\SideBarComposer;
 use Illuminate\Support\ServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::defaultView('pagination.default');
+
+        View::composer(
+            'layouts.shared.sidebar',
+            SideBarComposer::class
+        );
     }
 }

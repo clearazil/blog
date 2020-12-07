@@ -13,12 +13,17 @@
     <div class="widget widget--categories">
         <h3 class="h6">Categories</h3>
         <ul>
-            <li><a href="#0" title="">Wordpress</a> (2)</li>
-            <li><a href="#0" title="">Ghost</a> (14)</li>
-            <li><a href="#0" title="">Joomla</a> (5)</li>
-            <li><a href="#0" title="">Drupal</a> (3)</li>
-            <li><a href="#0" title="">Magento</a> (2)</li>
-            <li><a href="#0" title="">Uncategorized</a> (9)</li>
+            @foreach ($categories as $category)
+                <li>
+                    <a href="{{ route('home.index', ['categoryId' => $category->id]) }}" title="">
+                        {{ $category->name }}
+                    </a> ({{ $category->posts->count() }})
+                </li>
+            @endforeach
+
+            @if (!empty($postsWithoutCategoryCount))
+                <li><a href="{{ route('home.index', ['uncategorized' => 1]) }}" title="">Uncategorized</a> ({{ $postsWithoutCategoryCount }})</li>
+            @endif
         </ul>
     </div>
 
