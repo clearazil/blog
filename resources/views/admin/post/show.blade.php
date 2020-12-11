@@ -35,6 +35,14 @@
                     <td>{!! nl2br(e($post->content)) !!}</td>
                 </tr>
                 <tr>
+                    <th>Afbeelding</th>
+                    <td>
+                        @if($post->image !== null)
+                            <img src="{{ asset('storage/' . $post->image) }}">
+                        @endif
+                    </td>
+                </tr>
+                <tr>
                     <th>Categorieën</th>
                     <td>
                         <ul>

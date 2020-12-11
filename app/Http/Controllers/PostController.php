@@ -47,6 +47,11 @@ class PostController extends Controller
 
         $post = new Post($data);
         $post->user_id = Auth::id();
+
+        if ($request->file('image') !== null) {
+            $post->image = $request->file('image')->store('public/images/posts');
+        }
+
         $post->save();
 
         $post->categories()->attach($request->get('categories'));
@@ -69,6 +74,9 @@ class PostController extends Controller
         $data = $this->validatePost($request);
 
         $post->fill($data);
+        if ($request->file('image') !== null) {
+            $post->image = $request->file('image')->store('public/images/posts');
+        }
         $post->save();
         $post->categories()->sync($request->get('categories'));
 
@@ -94,6 +102,7 @@ class PostController extends Controller
     {
         return $request->validate([
             'title' => 'required',
+            'image' => 'image|mimes:jpg,jpeg,png,bmp',
             'lead' => 'required',
             'content' => 'required',
             'is_premium' => 'required|bool',

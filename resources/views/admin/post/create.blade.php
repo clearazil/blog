@@ -7,7 +7,7 @@
         <a href="{{ route('admin.post.create') }}">Nieuw</a>
     </h4>
 
-    <form method="POST" action="{{ route('admin.post.store') }}">
+    <form method="POST" action="{{ route('admin.post.store') }}" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -29,6 +29,14 @@
             <div class="warning">{{ $message }}</div>
         @enderror
         <textarea name="content" class="h-full-width" id="content">{{ old('content') }}</textarea>
+
+        <div>
+            <label for="image">Afbeelding</label>
+            @error('image')
+                <div class="warning">{{ $message }}</div>
+            @enderror
+            <input type="file" name="image" class="h-full-width" id="image">
+        </div>
 
         <div>
             <label for="categories">Categorieën</label>

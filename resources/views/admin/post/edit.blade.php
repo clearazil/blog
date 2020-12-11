@@ -8,7 +8,7 @@
         <a href="{{ route('admin.post.edit', ['post' => $post->id]) }}">Bewerken</a>
     </h4>
 
-    <form method="POST" action="{{ route('admin.post.update', ['post' => $post->id]) }}">
+    <form method="POST" action="{{ route('admin.post.update', ['post' => $post->id]) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -31,6 +31,14 @@
             <div class="warning">{{ $message }}</div>
         @enderror
         <textarea name="content" class="h-full-width" id="content">{{ (old('content', $post->content)) }}</textarea>
+
+        <div>
+            <label for="image">Afbeelding</label>
+            @error('image')
+                <div class="warning">{{ $message }}</div>
+            @enderror
+            <input type="file" name="image" class="h-full-width" id="image">
+        </div>
 
         <div>
             <label for="categories">Categorieën</label>
