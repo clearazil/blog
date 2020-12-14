@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Middleware\Authenticate;
 
 /*
@@ -23,6 +24,9 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
 Route::post('/posts/{post}/comments/store', [CommentController::class, 'store'])->name('comment.store');
 
 Route::middleware(Authenticate::class)->group(function () {
+    Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user.profile.edit');
+    Route::get('/user/profile/show', [UserProfileController::class, 'show'])->name('user.profile.show');
+
     Route::get('/admin', [PostController::class, 'adminIndex'])->name('admin.post.index');
     Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.post.create');
     Route::post('/admin/posts/store', [PostController::class, 'store'])->name('admin.post.store');
