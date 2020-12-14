@@ -18,6 +18,10 @@
                     <th>Email</th>
                     <td>{{ auth()->user()->email }}</td>
                 </tr>
+                <tr>
+                    <th>Digest</th>
+                    <td>Niet ingeschreven | <a href="">Inschrijven</a></td>
+                </tr>
             </tbody>
         </table>
 

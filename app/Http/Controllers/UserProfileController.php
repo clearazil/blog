@@ -16,7 +16,7 @@ class UserProfileController extends Controller
         return view('user.profile.edit');
     }
 
-    public function update()
+    public function registerForDigest()
     {
 
     }
