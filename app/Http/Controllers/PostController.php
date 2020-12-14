@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,7 +50,7 @@ class PostController extends Controller
         $post->user_id = Auth::id();
 
         if ($request->file('image') !== null) {
-            $post->image = $request->file('image')->store('public/images/posts');
+            $post->image = $request->file('image')->store('/public/images/posts');
         }
 
         $post->save();
@@ -75,7 +76,11 @@ class PostController extends Controller
 
         $post->fill($data);
         if ($request->file('image') !== null) {
-            $post->image = $request->file('image')->store('public/images/posts');
+            if ($post->image !== null) {
+                Storage::delete(($post->image));
+            }
+
+            $post->image = $request->file('image')->store('/public/images/posts');
         }
         $post->save();
         $post->categories()->sync($request->get('categories'));
@@ -86,6 +91,10 @@ class PostController extends Controller
     public function delete(Post $post, Request $request)
     {
         if ($post->delete()) {
+            if ($post->image !== null) {
+                Storage::delete(($post->image));
+            }
+
             $messageStatus = 'success';
             $request->session()->flash('message', 'Artikel verwijderd.');
         } else {
@@ -102,7 +111,7 @@ class PostController extends Controller
     {
         return $request->validate([
             'title' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,bmp',
+            'image' => 'image|mimes:jpg,jpeg,png,bmp|max:5000',
             'lead' => 'required',
             'content' => 'required',
             'is_premium' => 'required|bool',

@@ -27,10 +27,9 @@
         </header> <!-- entry__header -->
 
         <div class="entry__content-media">
-            <img src="{{ asset('images/wheel-500.jpg') }}"
-                    srcset="{{ asset('images/wheel-1000.jpg') }} 1000w,
-                            {{ asset('images/wheel-500.jpg') }} 500w"
-                    sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+            @if ($post->image !== null)
+                <img src="{{ asset('storage/' . $post->image) }}" alt="">
+            @endif
         </div>
 
         <div class="entry__content">

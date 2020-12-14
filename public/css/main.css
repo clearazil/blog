@@ -1402,6 +1402,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     max-width: 1000px;
 }
 
+.img-50-percent {
+    max-width: 50%;
+}
+
 
 
 /* ===================================================================

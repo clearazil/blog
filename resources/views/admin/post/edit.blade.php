@@ -34,6 +34,10 @@
 
         <div>
             <label for="image">Afbeelding</label>
+            @if ($post->image !== null)
+                <p>Bij het uploaden van een nieuwe afbeelding wordt de huidige afbeelding vervangen.</p>
+                <img class="img-50-percent" src="{{ asset('storage/' . $post->image) }}">
+            @endif
             @error('image')
                 <div class="warning">{{ $message }}</div>
             @enderror

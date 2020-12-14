@@ -38,7 +38,7 @@
                     <th>Afbeelding</th>
                     <td>
                         @if($post->image !== null)
-                            <img src="{{ asset('storage/' . $post->image) }}">
+                            <img class="img-50-percent" src="{{ asset('storage/' . $post->image) }}">
                         @endif
                     </td>
                 </tr>
