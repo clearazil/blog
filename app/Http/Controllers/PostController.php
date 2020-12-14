@@ -19,15 +19,21 @@ class PostController extends Controller
 
     public function adminIndex()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::where([
+            'user_id' => Auth::id(),
+        ])->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.post.index', [
             'posts' => $posts,
         ]);
     }
 
-    public function adminShow(Post $post)
+    public function adminShow(Post $post, Request $request)
     {
+        if ($request->user()->cannot('view', $post)) {
+            abort(403);
+        }
+
         return view('admin.post.show', [
             'post' => $post,
         ]);
@@ -60,8 +66,12 @@ class PostController extends Controller
         return redirect(route('admin.post.show', ['post' => $post->id]));
     }
 
-    public function edit(Post $post)
+    public function edit(Post $post, Request $request)
     {
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
+        }
+
         $categories = Category::all();
 
         return view('admin.post.edit', [
@@ -72,6 +82,10 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request)
     {
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
+        }
+
         $data = $this->validatePost($request);
 
         $post->fill($data);
