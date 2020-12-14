@@ -104,6 +104,10 @@ class PostController extends Controller
 
     public function delete(Post $post, Request $request)
     {
+        if ($request->user()->cannot('view', $post)) {
+            abort(403);
+        }
+
         if ($post->delete()) {
             if ($post->image !== null) {
                 Storage::delete(($post->image));
