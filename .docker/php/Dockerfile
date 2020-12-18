@@ -20,23 +20,6 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-# Cron job for Laravel scheduler:
-
-# Copy laravel-scheduler file to the cron.d directory
-COPY --chown=$user:$user cron/laravel-scheduler /etc/cron.d/laravel-scheduler
-
-# Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/laravel-scheduler
-
-# Apply cron job
-RUN crontab /etc/cron.d/laravel-scheduler
-
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
-
-# Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
-
 RUN mkdir /app
 WORKDIR /app
 USER $user
