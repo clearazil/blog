@@ -20,7 +20,13 @@
                 </tr>
                 <tr>
                     <th>Digest</th>
-                    <td>Niet ingeschreven | <a href="">Inschrijven</a></td>
+                    <td>
+                        @if (Auth::user()->is_subscribed_to_digest)
+                            Ingeschreven | <a href="{{ route('user.profile.digest.unsubscribe') }}">Uitschrijven</a>
+                        @else
+                            Niet ingeschreven | <a href="{{ route('user.profile.digest.subscribe') }}">Inschrijven</a>
+                        @endif
+                    </td>
                 </tr>
             </tbody>
         </table>
