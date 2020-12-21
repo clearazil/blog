@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\WeeklyDigest;
+use App\Mail\Digest;
+use App\Models\Post;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -40,10 +42,14 @@ class SendWeeklyDigest extends Command
      */
     public function handle()
     {
-        $users = User::where(['is_subscribed_to_digest' => true])->get();
+        $posts = $posts = Post::where('created_at', '>', Carbon::now()->subDays(7))->get();
 
-        foreach ($users as $user) {
-            Mail::to($user->email)->send(new WeeklyDigest);
+        if ($posts->isNotEmpty()) {
+            $users = User::where(['is_subscribed_to_digest' => true])->get();
+
+            foreach ($users as $user) {
+                Mail::to($user->email)->send(new Digest($posts));
+            }
         }
 
         return 0;

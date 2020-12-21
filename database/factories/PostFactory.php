@@ -28,6 +28,7 @@ class PostFactory extends Factory
             'lead' => $this->faker->paragraph(),
             'content' => $this->faker->paragraphs(3, true),
             'is_premium' => $this->faker->boolean(),
+            'created_at' => $this->faker->dateTimeBetween('-2 years', '2020-11-01 00:00:00', 'Europe/Amsterdam'),
         ];
     }
 }

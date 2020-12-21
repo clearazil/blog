@@ -3,24 +3,25 @@
 namespace App\Mail;
 
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WeeklyDigest extends Mailable
+class Digest extends Mailable
 {
     use Queueable, SerializesModels;
+
+    private $posts;
 
     /**
      * Create a new message instance.
      *
+     * @param Post[] $posts
      * @return void
      */
-    public function __construct()
+    public function __construct($posts)
     {
-        //
+        $this->posts = $posts;
     }
 
     /**
@@ -30,10 +31,10 @@ class WeeklyDigest extends Mailable
      */
     public function build()
     {
-        $posts = Post::where('created_at', '>', Carbon::now()->subDays(7))->get();
+
 
         return $this->markdown('emails.posts.digest', [
-            'posts' => $posts,
+            'posts' => $this->posts,
         ]);
     }
 }
