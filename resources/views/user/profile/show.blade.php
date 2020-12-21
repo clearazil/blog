@@ -28,6 +28,16 @@
                         @endif
                     </td>
                 </tr>
+                <tr>
+                    <th>Premium Content</th>
+                    <td>
+                        @if (Auth::user()->hasPremium())
+                            Abonnement verloopt op {{ auth()->user()->premium_subscription_expires_at->isoformat('D-M-Y HH:mm:ss') }}
+                        @else
+                            Niet geabonneerd | <a href="{{ route('user.profile.premium.create') }}">Abonneren</a>
+                        @endif
+                    </td>
+                </tr>
             </tbody>
         </table>
 

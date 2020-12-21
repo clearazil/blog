@@ -5,7 +5,12 @@
         <header class="entry__header">
 
             <h2 class="entry__title h1">
-                <a href="{{ route('post.show', ['post' => $post->id]) }}" title="">{{ $post->title }}</a>
+                <a href="{{ route('post.show', ['post' => $post->id]) }}" title="">
+                    {{ $post->title }}
+                </a>
+                @if ($post->is_premium)
+                    <img src="{{ asset('images/premium.png') }}">
+                @endif
             </h2>
 
             <div class="entry__meta">

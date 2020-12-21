@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = [
+        'premium_subscription_expires_at',
+    ];
+
+    /**
+     * Determine if the user has an
+     * active premium subscription
+     *
+     * @return boolean
+     */
+    public function hasPremium()
+    {
+        return $this->premium_subscription_expires_at > Carbon::now();
+    }
 
     public function posts()
     {

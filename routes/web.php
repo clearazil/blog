@@ -30,6 +30,10 @@ Route::middleware(Authenticate::class)->group(function () {
         ->name('user.profile.digest.subscribe');
     Route::get('/user/profile/digest/unsubscribe', [UserProfileController::class, 'unsubscribeForDigest'])
         ->name('user.profile.digest.unsubscribe');
+    Route::get('/user/profile/premium/subscribe', [UserProfileController::class, 'createPremiumSubscription'])
+        ->name('user.profile.premium.create');
+    Route::post('/user/profile/premium/subscribe', [UserProfileController::class, 'storePremiumSubscription'])
+        ->name('user.profile.premium.store');
 
     Route::get('/admin', [PostController::class, 'adminIndex'])->name('admin.post.index');
     Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.post.create');

@@ -229,6 +229,24 @@ p.lead {
     color: #272727;
 }
 
+p.lead.premium-fade {
+    max-height:200px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    content: "";
+    position:relative;
+}
+
+p.lead.premium-fade:before {
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    background:linear-gradient(transparent 1px, white);
+}
+
 @media screen and (max-width:600px) {
     p.lead {
         font-size: 1.8rem;
@@ -2336,6 +2354,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .entry__content-media img {
     vertical-align: bottom;
+}
+
+.entry__title img {
+    width: 20%;
 }
 
 /* -------------------------------------------------------------------

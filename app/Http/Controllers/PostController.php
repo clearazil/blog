@@ -30,7 +30,7 @@ class PostController extends Controller
 
     public function adminShow(Post $post, Request $request)
     {
-        if ($request->user()->cannot('view', $post)) {
+        if ($request->user()->cannot('viewAdmin', $post)) {
             abort(403);
         }
 
