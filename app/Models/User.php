@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post');
     }
 
+    public function address()
+    {
+        return $this->hasOne('App\Models\Address');
+    }
+
     /**
      * Send the password reset notification.
      *
