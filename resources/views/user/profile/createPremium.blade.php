@@ -9,58 +9,58 @@
 
         <div>
             <label for="address[name]">Naam</label>
-            @error('address[name]')
+            @error('address.name')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[name]" class="h-full-width" type="text" id="name" value="{{ old('address[name]', $address->name) }}">
+            <input name="address[name]" class="h-full-width" type="text" id="name" value="{{ old('address.name', $address->name) }}">
         </div>
 
         <div>
             <label for="address[surname]">Achternaam</label>
-            @error('address[surname]')
+            @error('address.surname')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[surname]" class="h-full-width" type="text" id="surname" value="{{ old('address[surname]', $address->surname) }}">
+            <input name="address[surname]" class="h-full-width" type="text" id="surname" value="{{ old('address.surname', $address->surname) }}">
         </div>
 
         <div>
             <label for="address[street_name]">Straat</label>
-            @error('address[street_name]')
+            @error('address.street_name')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[street_name]" class="h-full-width" type="text" id="street_name" value="{{ old('address[street_name]', $address->street_name) }}">
+            <input name="address[street_name]" class="h-full-width" type="text" id="street_name" value="{{ old('address.street_name', $address->street_name) }}">
         </div>
 
         <div>
             <label for="address[street_number]">Huisnummer</label>
-            @error('address[street_number]')
+            @error('address.street_number')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[street_number]" class="h-full-width" type="text" id="street_number" value="{{ old('address[street_number]', $address->street_number) }}">
+            <input name="address[street_number]" class="h-full-width" type="text" id="street_number" value="{{ old('address.street_number', $address->street_number) }}">
         </div>
 
         <div>
             <label for="address[zip_code]">Postcode</label>
-            @error('address[zip_code]')
+            @error('address.zip_code')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[zip_code]" class="h-full-width" type="text" id="zip_code" value="{{ old('address[zip_code]', $address->zip_code) }}">
+            <input name="address[zip_code]" class="h-full-width" type="text" id="zip_code" value="{{ old('address.zip_code', $address->zip_code) }}">
         </div>
 
         <div>
             <label for="address[city]">Plaats</label>
-            @error('address[city]')
+            @error('address.city')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="address[city]" class="h-full-width" type="text" id="city" value="{{ old('address[city]', $address->city) }}">
+            <input name="address[city]" class="h-full-width" type="text" id="city" value="{{ old('address.city', $address->city) }}">
         </div>
 
         <div>
-            <label for="addresss[phone_number]">Telefoonnummer</label>
-            @error('addresss[phone_number]')
+            <label for="address[phone_number]">Telefoonnummer</label>
+            @error('address.phone_number')
                 <div class="warning">{{ $message }}</div>
             @enderror
-            <input name="addresss[phone_number]" class="h-full-width" type="text" id="phone_number" value="{{ old('addresss[phone_number]', $address->phone_number) }}">
+            <input name="address[phone_number]" class="h-full-width" type="text" id="phone_number" value="{{ old('address.phone_number', $address->phone_number) }}">
         </div>
 
         <div>

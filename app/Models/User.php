@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->premium_subscription_expires_at > Carbon::now();
     }
 
+    public function hadPremium()
+    {
+        return $this->premium_subscription_expires_at !== null && !$this->hasPremium();
+    }
+
     public function posts()
     {
         return $this->hasMany('App\Models\Post');

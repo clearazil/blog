@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Models\Address;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,12 +12,23 @@ class UserProfileController extends Controller
 {
     public function show()
     {
-        return view('user.profile.show');
+        return view('user.profile.show', [
+            'user' => Auth::user(),
+        ]);
     }
 
     public function edit()
     {
-        return view('user.profile.edit');
+        return view('user.profile.edit', [
+            'user' => Auth::user(),
+        ]);
+    }
+
+    public function update(Request $request, UpdateUserProfileInformation $updater)
+    {
+        $updater->update($request->user(), $request->all());
+
+        return redirect(route('user.profile.show'));
     }
 
     public function subscribeForDigest()
@@ -42,11 +54,17 @@ class UserProfileController extends Controller
     {
         $data = $this->validatePremiumSubscription($request);
 
-        $address = new Address($data);
-
-        dd($address);
-
         $user = Auth::user();
+
+        if ($user->address !== null) {
+            $address = $user->address;
+            $address->fill($data['address']);
+        } else {
+            $address = new Address($data['address']);
+            $address->user_id = $user->id;
+        }
+
+        $address->save();
 
         $user->premium_subscription_expires_at = Carbon::now()->addMonth();
         $user->save();
@@ -57,13 +75,13 @@ class UserProfileController extends Controller
     private function validatePremiumSubscription(Request $request)
     {
         return $request->validate([
-            'address' => 'required',
-            'address' => 'required',
-            'address' => 'required',
-            'address' => 'required',
-            'address' => 'required',
-            'address' => 'required',
-            'address' => 'nullable',
+            'address.name' => 'required',
+            'address.surname' => 'required',
+            'address.street_name' => 'required',
+            'address.street_number' => 'required',
+            'address.zip_code' => 'required',
+            'address.city' => 'required',
+            'address.phone_number' => 'nullable',
             'has_paid' => 'required|accepted',
         ]);
     }

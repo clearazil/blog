@@ -25,6 +25,7 @@ Route::post('/posts/{post}/comments/store', [CommentController::class, 'store'])
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user.profile.edit');
+    Route::put('/user/profile/update', [UserProfileController::class, 'update'])->name('user.profile.update');
     Route::get('/user/profile/show', [UserProfileController::class, 'show'])->name('user.profile.show');
     Route::get('/user/profile/digest/subscribe', [UserProfileController::class, 'subscribeForDigest'])
         ->name('user.profile.digest.subscribe');

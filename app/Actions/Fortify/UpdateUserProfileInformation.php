@@ -18,7 +18,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
-        Validator::make($input, [
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
 
             'email' => [
@@ -28,7 +28,21 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
-        ])->validateWithBag('updateProfileInformation');
+        ];
+
+        if ($user->address !== null) {
+            $rules = array_merge($rules, [
+                'address.name' => 'required',
+                'address.surname' => 'required',
+                'address.street_name' => 'required',
+                'address.street_number' => 'required',
+                'address.zip_code' => 'required',
+                'address.city' => 'required',
+                'address.phone_number' => 'nullable',
+            ]);
+        }
+
+        Validator::make($input, $rules)->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
@@ -38,6 +52,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'name' => $input['name'],
                 'email' => $input['email'],
             ])->save();
+        }
+
+        if ($user->address !== null) {
+            $user->address->fill($input['address'])->save();
         }
     }
 
