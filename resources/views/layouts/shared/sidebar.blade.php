@@ -1,15 +1,5 @@
 <div id="sidebar" class="s-content__sidebar large-4 column">
 
-    <div class="widget widget--search">
-        <h3 class="h6">Search</h3>
-        <form action="#">
-            <input type="text" value="Search here..."
-                onblur="if(this.value == '') { this.value = 'Search here...'; }"
-                onfocus="if (this.value == 'Search here...') { this.value = ''; }" class="text-search">
-            <input type="submit" value="" class="submit-search">
-        </form>
-    </div>
-
     <div class="widget widget--categories">
         <h3 class="h6">Categories</h3>
         <ul>
@@ -37,28 +27,8 @@
         </p>
     </div>
 
-    <div class="widget widget_tags">
-        <h3 class="h6">Post Tags</h3>
 
-        <div class="tagcloud group">
-            <a href="#0">Corporate</a>
-            <a href="#0">Onepage</a>
-            <a href="#0">Agency</a>
-            <a href="#0">Multipurpose</a>
-            <a href="#0">Blog</a>
-            <a href="#0">Landing Page</a>
-            <a href="#0">Resume</a>
-        </div>
-    </div>
 
-    <div class="widget widget_popular">
-        <h3 class="h6">Popular Post</h3>
 
-        <ul class="link-list">
-            <li><a href="#">Sint cillum consectetur voluptate.</a></li>
-            <li><a href="#">Lorem ipsum Ullamco commodo.</a></li>
-            <li><a href="#">Fugiat minim eiusmod do.</a></li>
-        </ul>
-    </div>
 
 </div> <!-- end sidebar -->

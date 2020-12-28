@@ -35,3 +35,11 @@
 @section('sidebar.buttons')
     <a class="btn btn--primary btn--small" href="{{ route('admin.post.index') }}">Administratie</a>
 @endsection
+
+@section('footer.menu')
+    <ul class="s-footer__list s-footer-list--nav group">
+        <li><a href="{{ route('home.index') }}">Home</a></li>
+        <li><a href="{{ route('post.index') }}">Artikelen</a></li>
+        <li><a href="{{ route('user.profile.show') }}"></a></li>
+    </ul>
+@endsection

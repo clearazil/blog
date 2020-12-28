@@ -23,3 +23,10 @@
 @section('sidebar.buttons')
     <a class="btn btn--primary btn--small" href="{{ route('home.index') }}">Blog</a>
 @endsection
+
+@section('footer.menu')
+    <ul class="s-footer__list s-footer-list--nav group">
+        <li><a href="{{ route('admin.post.index') }}">Artikelen</a></li>
+        <li><a href="{{ route('admin.category.index') }}">Categorieën</a></li>
+    </ul>
+@endsection

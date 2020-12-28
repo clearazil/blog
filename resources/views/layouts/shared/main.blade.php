@@ -109,19 +109,6 @@
     ================================================== -->
     <footer class="s-footer">
 
-        <div class="row s-footer__top">
-            <div class="column">
-                <ul class="s-footer__social">
-                    <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-vimeo-v" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-skype" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div> <!-- end footer__top -->
 
         <div class="row s-footer__bottom">
 
@@ -141,35 +128,10 @@
             </div>
 
             <div class="large-6 tab-full column">
-                <div class="row">
-                    <div class="large-8 tab-full column">
+                <div class="large-4 tab-full column">
+                    <h3 class="h6">Navigate</h3>
 
-                        <h3 class="h6">Photostream</h3>
-
-                        <ul class="photostream group">
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                            <li><a href="#0"><img alt="thumbnail" src="{{ asset('images/thumb.jpg') }}"></a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="large-4 tab-full column">
-                        <h3 class="h6">Navigate</h3>
-
-                        <ul class="s-footer__list s-footer-list--nav group">
-                            <li><a href="#0">Home</a></li>
-                            <li><a href="#0">Blog</a></li>
-                            <li><a href="#0">Demo</a></li>
-                            <li><a href="#0">Archives</a></li>
-                            <li><a href="#0">About</a></li>
-                        </ul>
-                    </div>
+                    @yield('footer.menu')
                 </div>
             </div>
 
