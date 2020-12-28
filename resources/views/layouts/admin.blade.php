@@ -1,15 +1,14 @@
 @extends('layouts.shared.main')
 
 @section('header.title')
-    <a href="index.html" title="">Administratie</a>
+    <a href="{{ route('admin.post.index') }}" title="">Administratie</a>
 @endsection
 
 @section('menu')
     <div class="row">
-
         <ul class="s-header__nav">
-            <li class="current"><a href="{{ route('admin.post.index') }}">Artikelen</a></li>
-            <li><a href="{{ route('admin.category.index') }}">Categorieën</a></li>
+            <li class="{{ request()->is('admin/posts*') ? 'current' : '' }}"><a href="{{ route('admin.post.index') }}">Artikelen</a></li>
+            <li class="{{ request()->is('admin/categories*') ? 'current' : '' }}"><a href="{{ route('admin.category.index') }}">Categorieën</a></li>
         </ul> <!-- end #nav -->
 
     </div>

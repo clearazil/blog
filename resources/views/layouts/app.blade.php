@@ -12,9 +12,10 @@
     <div class="row">
 
         <ul class="s-header__nav">
-            <li class="current"><a href="{{ route('home.index') }}">Home</a></li>
+            <li class="{{ request()->is('/') ? 'current' : '' }}"><a href="{{ route('home.index') }}">Home</a></li>
+            <li class="{{ request()->is('posts*') ? 'current' : '' }}"><a href="{{ route('post.index') }}">Artikelen</a></li>
             @if (Auth::check())
-                <li><a href="{{ route('user.profile.show') }}">Account</a></li>
+                <li class="{{ request()->is('user/profile*') ? 'current' : '' }}"><a href="{{ route('user.profile.show') }}">Account</a></li>
             @endif
         </ul> <!-- end #nav -->
 

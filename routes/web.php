@@ -20,6 +20,7 @@ use App\Http\Middleware\Authenticate;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/posts/', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
 Route::post('/posts/{post}/comments/store', [CommentController::class, 'store'])->name('comment.store');
 
@@ -36,7 +37,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::post('/user/profile/premium/subscribe', [UserProfileController::class, 'storePremiumSubscription'])
         ->name('user.profile.premium.store');
 
-    Route::get('/admin', [PostController::class, 'adminIndex'])->name('admin.post.index');
+    Route::get('/admin/posts/', [PostController::class, 'adminIndex'])->name('admin.post.index');
     Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.post.create');
     Route::post('/admin/posts/store', [PostController::class, 'store'])->name('admin.post.store');
     Route::get('/admin/posts/{post}', [PostController::class, 'adminShow'])->name('admin.post.show');

@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::orderBy('created_at', 'desc');
+
+        return view('post.index', [
+            'posts' => $posts->paginate(10),
+        ]);
+    }
+
     public function show(Post $post)
     {
         return view('post.show', [
