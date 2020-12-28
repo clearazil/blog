@@ -1,7 +1,7 @@
 <div id="sidebar" class="s-content__sidebar large-4 column">
 
     <div class="widget widget--categories">
-        <h3 class="h6">Categories</h3>
+        <h3 class="h6">{{ __('common.categories') }}</h3>
         <ul>
             @foreach ($categories as $category)
                 <li>
@@ -12,7 +12,7 @@
             @endforeach
 
             @if (!empty($postsWithoutCategoryCount))
-                <li><a id="posts-without-category-link" href="{{ route('home.index', ['uncategorized' => 1]) }}" title="">Uncategorized</a> ({{ $postsWithoutCategoryCount }})</li>
+                <li><a id="posts-without-category-link" href="{{ route('home.index', ['uncategorized' => 1]) }}" title="">{{ __('categories.uncategorized') }}</a> ({{ $postsWithoutCategoryCount }})</li>
             @endif
         </ul>
     </div>

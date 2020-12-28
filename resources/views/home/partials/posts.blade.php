@@ -37,7 +37,7 @@
 
     </article> <!-- end entry -->
 @empty
-    <p>No posts yet.</p>
+    <p>{{ __('posts.none') }}</p>
 @endforelse
 
 {{ $posts->links() }}

@@ -1,7 +1,7 @@
 @component('mail::message')
-# Digest
+# {{ __('posts.digest') }}
 
-Dit zijn de blogberichten van de laatste week.
+{{ __('posts.lastWeeksPosts') }}
 
 @foreach($posts as $post)
 <h1>{{ $post->title }}</h1>
@@ -11,6 +11,6 @@ Dit zijn de blogberichten van de laatste week.
 @endforeach
 
 <br>
-Bedankt,<br>
+{{ __('common.thanks') }},<br>
 {{ config('app.name') }}
 @endcomponent

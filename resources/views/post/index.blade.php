@@ -4,7 +4,7 @@
 
     <section class="page-content">
 
-        <h2 class="page-content__title h1">Artikelen</h2>
+        <h2 class="page-content__title h1">{{ __('common.posts') }}</h2>
 
         <p class="lead">
         Lorem ipsum Nisi enim est proident est magna occaecat dolore

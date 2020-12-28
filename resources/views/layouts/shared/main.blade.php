@@ -62,18 +62,18 @@
             </div>
             <div class="s-header__content">
                 @if (Auth::check())
-                    <h3 class="h6">Welkom, {{ Auth::user()->name }}</h3>
+                    <h3 class="h6">{{ __('common.welcomeUser', ['name' => Auth::user()->name]) }}</h3>
 
                     @yield('sidebar.buttons')
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="btn btn--small">Uitloggen</button>
+                        <button class="btn btn--small">{{ __('common.logout') }}</button>
                     </form>
                 @else
-                    <h3 class="h6">Login</h3>
+                    <h3 class="h6">{{ __('common.login') }}</h3>
 
-                    <a class = "btn btn--small" href="{{ route('login') }}" title="">Login</a>
+                    <a class = "btn btn--small" href="{{ route('login') }}" title="">{{ __('common.login') }}</a>
                 @endif
             </div>
 
@@ -86,9 +86,6 @@
             @yield('menu')
 
         </nav> <!-- end #nav-wrap -->
-
-        <a class="header-menu-toggle" href="#0" title="Menu"><span>Menu</span></a>
-
     </header> <!-- Header End -->
 
     <!-- Content
