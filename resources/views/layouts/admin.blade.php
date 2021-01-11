@@ -8,7 +8,7 @@
     <div class="row">
         <ul class="s-header__nav">
             <li class="{{ request()->is('admin/posts*') ? 'current' : '' }}"><a href="{{ route('admin.post.index') }}">{{ __('common.posts') }}</a></li>
-            <li class="{{ request()->is('admin/categories*') ? 'current' : '' }}"><a href="{{ route('admin.category.index') }}">{{ __('common.posts') }}</a></li>
+            <li class="{{ request()->is('admin/categories*') ? 'current' : '' }}"><a href="{{ route('admin.category.index') }}">{{ __('common.categories') }}</a></li>
         </ul> <!-- end #nav -->
 
     </div>
