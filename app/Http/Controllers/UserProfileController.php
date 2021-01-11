@@ -36,6 +36,11 @@ class UserProfileController extends Controller
         return $this->digest(true);
     }
 
+    // R: je zou er voor kunnen kiezen om alle controllers altijd van dezelfde CRUD functies te voorzien (altijd dezelfde namen: index, show, update, store,
+    // delete) voor meer consitentie en betere leesbaarheid. In dit geval kun je een afzonderlijke Digest controller gebruiken, of, indien dit praktischer
+    // is, een geneste resource controller. Zie ook:
+    // https://laraveldaily.com/nested-resource-controllers-and-routes-laravel-crud-example/
+    // https://laravel.com/docs/8.x/controllers#restful-nested-resources
     public function unsubscribeForDigest()
     {
         return $this->digest(false);

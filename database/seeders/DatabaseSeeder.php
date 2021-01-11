@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // R: gebruik aparte seeder bestanden / classes per onderwerp, niet alle seeders in 1 bestand,
+        // voor meer structuur / beter overzicht / meer mogelijkheden (seeders afzonderlijk kunnen uitvoeren)
         $categories = Category::factory()->count(3)->create();
 
         User::factory()

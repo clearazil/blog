@@ -7,6 +7,7 @@
 @section('menu')
     <div class="row">
         <ul class="s-header__nav">
+            {{-- R: er wordt twee keer een 'Artikelen' tabblad weergegeven --}}
             <li class="{{ request()->is('admin/posts*') ? 'current' : '' }}"><a href="{{ route('admin.post.index') }}">{{ __('common.posts') }}</a></li>
             <li class="{{ request()->is('admin/categories*') ? 'current' : '' }}"><a href="{{ route('admin.category.index') }}">{{ __('common.posts') }}</a></li>
         </ul> <!-- end #nav -->

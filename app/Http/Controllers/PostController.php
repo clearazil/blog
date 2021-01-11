@@ -26,6 +26,8 @@ class PostController extends Controller
         ]);
     }
 
+    // R: leesbare oplossing, maar nog mooier zou zijn om een aparte admin post controller te maken, waarbij alle admin controllers in een eigen
+    // admin map komen te staan.
     public function adminIndex()
     {
         $posts = Post::where([
