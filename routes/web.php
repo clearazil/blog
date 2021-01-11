@@ -19,11 +19,19 @@ use App\Http\Middleware\Authenticate;
 |
 */
 
+// R: gebruiker registratiepagina ontbreekt? (staat niet in opdracht, maar zou mooi zijn als deze er wel zou zijn)
+
+// R: je kunt nog een extra 'catch-all' route toevoegen voor het geval de bezoeker een niet bestaande route opent:
+// Route::get('/{any}', [HomeController::class, 'index'])->where('any', '.*');
+
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+// R: je kunt hier evt. ook een resource-route gebruiken en niet gebruikte CRUD functies uitzonderen. Dit geldt ook voor alle andere onderstaande routes
 Route::get('/posts/', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
 Route::post('/posts/{post}/comments/store', [CommentController::class, 'store'])->name('comment.store');
 
+// R: je kunt ook Route::middleware('auth:api') gebruiken
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('/user/profile/update', [UserProfileController::class, 'update'])->name('user.profile.update');

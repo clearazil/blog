@@ -31,6 +31,8 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        // R: netjes dat je de validation in een aparte functie hebt ondergebracht. Je kunt dit nog verder doorvoeren
+        // door gebruik te maken van Request validation: https://laravel.com/docs/8.x/validation#form-request-validation
         $data = $this->validateCategory($request);
 
         $category = new Category($data);

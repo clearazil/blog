@@ -17,6 +17,8 @@ class CommentController extends Controller
         ]);
 
         $comment = new Comment($data);
+        // R: i.p.v. de foreign key te updaten kun je gebruikmaken van de Eloquent relation $post->comments()->save...
+        // zie: https://laravel.com/docs/8.x/eloquent-relationships#inserting-and-updating-related-models
         $comment->post_id = $post->id;
         $comment->save();
 
