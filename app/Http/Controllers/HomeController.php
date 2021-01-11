@@ -16,16 +16,19 @@ class HomeController extends Controller
     {
         $categoryId = $request->query('categoryId');
 
-        if (!empty($categoryId)) {
-            $posts = Post::whereHas('categories', function (Builder $query) use ($categoryId) {
+        $posts = Post::select('*');
+
+        if ($request->has('categoryId')) {
+            $posts->whereHas('categories', function (Builder $query) use ($categoryId) {
                 $query->where('categories.id', $categoryId);
-            })->orderBy('created_at', 'desc');
-        } elseif (!empty($request->query('uncategorized'))) {
-            $posts = Post::whereDoesntHave('categories')
-                ->orderBy('created_at', 'desc');
-        } else {
-            $posts = Post::orderBy('created_at', 'desc');
+            });
         }
+
+        if ($request->has('uncategorized')) {
+            $posts->whereDoesntHave('categories');
+        }
+
+        $posts->orderBy('created_at', 'desc');
 
         $view = 'home.index';
 
